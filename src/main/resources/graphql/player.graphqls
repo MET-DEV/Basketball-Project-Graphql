@@ -1,0 +1,40 @@
+type Player{
+    id:ID!,
+    firstName:String!,
+    lastName:String!,
+    position:Position
+}
+type PlayerDataResultModel{
+    data:[Player],
+    message:String,
+    status:Boolean
+}
+type PlayerAddResultModel{
+    data:Player,
+    message:String,
+    status:Boolean
+}
+type PlayerDeleteResultModel{
+    message:String,
+    status:Boolean
+}
+
+type Position{
+    id:ID!,
+    positionName:String
+}
+input PositionInput{
+    id:ID!
+}
+input  PlayerInput{
+    firstName:String!,
+    lastName:String!,
+    position:PositionInput!
+}
+type Mutation{
+    savePlayer(player:PlayerInput):PlayerAddResultModel
+    deletePlayer(id:ID):PlayerDeleteResultModel
+}
+type Query{
+    getPlayers:PlayerDataResultModel
+}
